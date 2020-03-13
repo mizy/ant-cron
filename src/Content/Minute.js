@@ -2,7 +2,7 @@
  * @Author: 苗壮
  * @Date: 2019-06-28 16:47:08
  * @LastEditors: Please set LastEditors
- * @LastEditTime: 2019-07-12 10:30:23
+ * @LastEditTime: 2019-07-15 14:15:31
  */
 import React, { PureComponent } from "react";
 import {Radio, InputNumber, message, List, Checkbox} from "antd";
@@ -15,7 +15,7 @@ export default class Minute extends PureComponent {
 
 	formatMinuteOptions() {
 		this.minuteOptions = [];
-		for (let x = 0 ;x < 60;x++) {
+		for (let x = 0 ;x < 59;x++) {
 			this.minuteOptions.push({
 				label: x < 10 ? `0${x}` : x,
 				value: `${x}`
@@ -49,9 +49,9 @@ export default class Minute extends PureComponent {
 						</List.Item>
 						<List.Item style={{marginBottom: 5}}>
 							<Radio value="period">周期</Radio>
-						 从&nbsp;<InputNumber min={0} max={60} defaultValue={0}  style={{width: 80}} placeholder="分" size="small" value={start} onChange={(value)=>{this.changeParams("start", value);}} />
+						 从&nbsp;<InputNumber min={0} max={59} defaultValue={0}  style={{width: 80}} placeholder="分" size="small" value={start} onChange={(value)=>{this.changeParams("start", value);}} />
 							 &nbsp;到&nbsp;
-							<InputNumber min={0} max={60}  defaultValue={60} style={{width: 80}} placeholder="分" value={end} size="small" onChange={(value)=>{this.changeParams("end", value);}} />
+							<InputNumber min={0} max={59}  defaultValue={59} style={{width: 80}} placeholder="分" value={end} size="small" onChange={(value)=>{this.changeParams("end", value);}} />
 						</List.Item>
 						<List.Item>
 							<Radio value="beginInterval"></Radio>

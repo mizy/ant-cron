@@ -320,6 +320,7 @@ class Cron extends PureComponent {
 		
 		this.setState({...this.state}, ()=>{
 			this.parse();
+			this.triggerChange();
 		});
 	}
 
