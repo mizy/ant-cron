@@ -372,7 +372,6 @@ class Cron extends PureComponent {
 	render() {
 		const state = JSON.parse(JSON.stringify(this.state))
 		const {year, month, week, day, hour, minute, second} = state;
-		console.log(second)
 		return <div className="antd-cron">
 			{this.renderOverLay()}
 			<List bordered style={{marginTop: 10}}>
