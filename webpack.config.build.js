@@ -1,3 +1,5 @@
+const { BundleAnalyzerPlugin } = require("webpack-bundle-analyzer");
+
 let webpackConfig = {
 	entry: "./src/index.js",
 	output: {
@@ -15,6 +17,9 @@ let webpackConfig = {
 	optimization: {
 		minimize: false
 	},
+	plugins:[
+		new BundleAnalyzerPlugin()
+	  ],
 	module: {
 		rules: [
 			{
