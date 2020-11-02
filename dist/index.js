@@ -1966,7 +1966,6 @@ function (_PureComponent) {
           hour = state.hour,
           minute = state.minute,
           second = state.second;
-      console.log(second);
       return external_react_default.a.createElement("div", {
         className: "antd-cron"
       }, this.renderOverLay(), external_react_default.a.createElement(external_antd_["List"], {
