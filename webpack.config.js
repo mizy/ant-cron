@@ -1,6 +1,6 @@
 const webpack = require("webpack"); 
 let webpackConfig = {
-	entry: "./test/index.js",
+	entry: "./test.js",
 	output:{
 		filename:"index.js",
 		publicPath:"/"

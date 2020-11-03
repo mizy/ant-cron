@@ -15,7 +15,7 @@ export default class Second extends PureComponent {
 
 	formatSecondOptions() {
 		this.secondOptions = [];
-		for (let x = 0 ;x < 59;x++) {
+		for (let x = 0 ;x <= 59;x++) {
 			this.secondOptions.push({
 				label: x < 10 ? `0${x}` : x,
 				value: `${x}`

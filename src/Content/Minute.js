@@ -15,7 +15,7 @@ export default class Minute extends PureComponent {
 
 	formatMinuteOptions() {
 		this.minuteOptions = [];
-		for (let x = 0 ;x < 59;x++) {
+		for (let x = 0 ;x <= 59;x++) {
 			this.minuteOptions.push({
 				label: x < 10 ? `0${x}` : x,
 				value: `${x}`

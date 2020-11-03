@@ -13,7 +13,7 @@ class Cron extends PureComponent {
 		super(props);
 		const date = new Date();
 		this.state = {
-			activeKey: "second",
+			activeKey: props.defaultActiveKey||"second",
 			year: {
 				type: "",
 				start: date.getFullYear(),
@@ -326,44 +326,45 @@ class Cron extends PureComponent {
 
 	renderOverLay() {
 		const {activeKey} = this.state;
+		const {disableSecond,disableMinute,disableHour,disableDay,disableWeek,disableMonth,disableYear} = this.props;
 		return (
 			<Tabs activeKey={activeKey} onChange={(key)=>{this.setState({activeKey: key});}}>
-				<TabPane tab="秒" key="second">
+				{!disableSecond&&<TabPane tab="秒" key="second">
 					<Second {...this.state} onChange={(state)=>{
 						this.changeState({second: state});
 					}} />
-				</TabPane>
-				<TabPane tab="分钟" key="minute">
+				</TabPane>}
+				{!disableMinute&&<TabPane tab="分钟" key="minute">
 					<Minute {...this.state} onChange={(state)=>{
 						this.changeState({minute: state});
 					}} />
-				</TabPane>
-				<TabPane tab="小时" key="hour">
+				</TabPane>}
+				{!disableHour&&<TabPane tab="小时" key="hour">
 					<Hour {...this.state} onChange={(state)=>{
 						this.changeState({hour: state});
 					}} />
-				</TabPane>
-				<TabPane tab="日" key="day">
+				</TabPane>}
+				{!disableDay&&<TabPane tab="日" key="day">
 					<Day {...this.state} onChange={(state)=>{
 						this.changeState({day: state});
 					}} />
-				</TabPane>
-				<TabPane tab="月" key="month">
+				</TabPane>}
+				{!disableMonth&&<TabPane tab="月" key="month">
 					<Month {...this.state} onChange={(state)=>{
 						this.changeState({month: state});
 					}} />
-				</TabPane>
-				<TabPane tab="周" key="week">
+				</TabPane>}
+				{!disableWeek&&<TabPane tab="周" key="week">
 					<Week {...this.state} onChange={(state)=>{
 						this.changeState({week: state});
 					}} />
-				</TabPane>
+				</TabPane>}
 
-				<TabPane tab="年" key="year">
+				{!disableYear&&<TabPane tab="年" key="year">
 					<Year {...this.state} onChange={(state)=>{
 						this.changeState({year: state});
 					}} />
-				</TabPane>
+				</TabPane>}
 			</Tabs>
 
 		);
@@ -372,6 +373,7 @@ class Cron extends PureComponent {
 	render() {
 		const state = JSON.parse(JSON.stringify(this.state))
 		const {year, month, week, day, hour, minute, second} = state;
+		const {disableSecond,disableMinute,disableHour,disableDay,disableWeek,disableMonth,disableYear} = this.props;
 		return <div className="antd-cron">
 			{this.renderOverLay()}
 			<List bordered style={{marginTop: 10}}>
@@ -388,25 +390,25 @@ class Cron extends PureComponent {
 				</List.Item>
 				<List.Item>
 					<Row type="flex" gutter={5} style={{width: "100%", textAlign: "center"}}>
-						<Col span={3}><Input value={second.value} onChange={(e)=>{
+						<Col span={3}><Input value={second.value} disabled={disableSecond} onChange={(e)=>{
 							this.onChange("second", e.target.value);
 						}}/></Col>
-						<Col span={3}><Input value={minute.value} onChange={(e)=>{
+						<Col span={3}><Input value={minute.value} disabled={disableMinute} onChange={(e)=>{
 							this.onChange("minute", e.target.value);
 						}}/></Col>
-						<Col span={3}><Input value={hour.value} onChange={(e)=>{
+						<Col span={3}><Input value={hour.value} disabled={disableHour} onChange={(e)=>{
 							this.onChange("hour", e.target.value);
 						}}/></Col>
-						<Col span={3}><Input value={day.value} onChange={(e)=>{
+						<Col span={3}><Input value={day.value} disabled={disableDay} onChange={(e)=>{
 							this.onChange("day", e.target.value);
 						}}/></Col>
-						<Col span={3}><Input value={month.value} onChange={(e)=>{
+						<Col span={3}><Input value={month.value} disabled={disableMonth} onChange={(e)=>{
 							this.onChange("month", e.target.value);
 						}}/></Col>
-						<Col span={3}><Input value={week.value} onChange={(e)=>{
+						<Col span={3}><Input value={week.value} disabled={disableWeek} onChange={(e)=>{
 							this.onChange("week", e.target.value);
 						}}/></Col>
-						<Col span={3}><Input value={year.value} onChange={(e)=>{
+						<Col span={3}><Input value={year.value} disabled={disableYear} onChange={(e)=>{
 							this.onChange("year", e.target.value);
 						}}/></Col>
 					</Row>

@@ -1,5 +1,5 @@
 {
-	"name": "@tntd/antd-cron",
+	"name": "antd-cron",
 	"version": "1.0.15",
 	"description": "cron react maker",
 	"main": "./dist/index",

@@ -33,7 +33,7 @@ export default class Week extends PureComponent {
 
 	getWeekOptions() {
 		return this.weekOptions.map(item=>{
-			return <Select.Option value={item.value}>
+			return <Select.Option key={item.value} value={item.value}>
 				{item.label}
 			</Select.Option>;
 		});
@@ -88,7 +88,7 @@ export default class Week extends PureComponent {
 						</List.Item>
 						<List.Item>
 							<Radio value="some">指定</Radio>
-							<Checkbox.Group value={some} defaultValue="1"  onChange={(value)=>{this.changeParams("some", value);}} options={this.weekOptions} />
+							<Checkbox.Group value={some} defaultValue={[1]}  onChange={(value)=>{this.changeParams("some", value);}} options={this.weekOptions} />
 						</List.Item>
 					</List>
 				</Group>
