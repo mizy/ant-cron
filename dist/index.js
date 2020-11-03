@@ -672,6 +672,7 @@ function (_PureComponent) {
     value: function getWeekOptions() {
       return this.weekOptions.map(function (item) {
         return external_react_default.a.createElement(external_antd_["Select"].Option, {
+          key: item.value,
           value: item.value
         }, item.label);
       });
@@ -788,7 +789,7 @@ function (_PureComponent) {
         value: "some"
       }, "\u6307\u5B9A"), external_react_default.a.createElement(external_antd_["Checkbox"].Group, {
         value: some,
-        defaultValue: "1",
+        defaultValue: [1],
         onChange: function onChange(value) {
           _this2.changeParams("some", value);
         },
@@ -1204,7 +1205,7 @@ function (_PureComponent) {
     value: function formatMinuteOptions() {
       this.minuteOptions = [];
 
-      for (var x = 0; x < 59; x++) {
+      for (var x = 0; x <= 59; x++) {
         this.minuteOptions.push({
           label: x < 10 ? "0".concat(x) : x,
           value: "".concat(x)
@@ -1353,7 +1354,7 @@ function (_PureComponent) {
     value: function formatSecondOptions() {
       this.secondOptions = [];
 
-      for (var x = 0; x < 59; x++) {
+      for (var x = 0; x <= 59; x++) {
         this.secondOptions.push({
           label: x < 10 ? "0".concat(x) : x,
           value: "".concat(x)
@@ -1513,7 +1514,7 @@ function (_PureComponent) {
 
     var date = new Date();
     _this.state = {
-      activeKey: "second",
+      activeKey: props.defaultActiveKey || "second",
       year: {
         type: "",
         start: date.getFullYear(),
@@ -1881,6 +1882,14 @@ function (_PureComponent) {
       var _this5 = this;
 
       var activeKey = this.state.activeKey;
+      var _this$props = this.props,
+          disableSecond = _this$props.disableSecond,
+          disableMinute = _this$props.disableMinute,
+          disableHour = _this$props.disableHour,
+          disableDay = _this$props.disableDay,
+          disableWeek = _this$props.disableWeek,
+          disableMonth = _this$props.disableMonth,
+          disableYear = _this$props.disableYear;
       return external_react_default.a.createElement(external_antd_["Tabs"], {
         activeKey: activeKey,
         onChange: function onChange(key) {
@@ -1888,7 +1897,7 @@ function (_PureComponent) {
             activeKey: key
           });
         }
-      }, external_react_default.a.createElement(TabPane, {
+      }, !disableSecond && external_react_default.a.createElement(TabPane, {
         tab: "\u79D2",
         key: "second"
       }, external_react_default.a.createElement(Second_Second, extends_default()({}, this.state, {
@@ -1897,7 +1906,7 @@ function (_PureComponent) {
             second: state
           });
         }
-      }))), external_react_default.a.createElement(TabPane, {
+      }))), !disableMinute && external_react_default.a.createElement(TabPane, {
         tab: "\u5206\u949F",
         key: "minute"
       }, external_react_default.a.createElement(Minute_Minute, extends_default()({}, this.state, {
@@ -1906,7 +1915,7 @@ function (_PureComponent) {
             minute: state
           });
         }
-      }))), external_react_default.a.createElement(TabPane, {
+      }))), !disableHour && external_react_default.a.createElement(TabPane, {
         tab: "\u5C0F\u65F6",
         key: "hour"
       }, external_react_default.a.createElement(Hour_Hour, extends_default()({}, this.state, {
@@ -1915,7 +1924,7 @@ function (_PureComponent) {
             hour: state
           });
         }
-      }))), external_react_default.a.createElement(TabPane, {
+      }))), !disableDay && external_react_default.a.createElement(TabPane, {
         tab: "\u65E5",
         key: "day"
       }, external_react_default.a.createElement(Day_Day, extends_default()({}, this.state, {
@@ -1924,7 +1933,7 @@ function (_PureComponent) {
             day: state
           });
         }
-      }))), external_react_default.a.createElement(TabPane, {
+      }))), !disableMonth && external_react_default.a.createElement(TabPane, {
         tab: "\u6708",
         key: "month"
       }, external_react_default.a.createElement(Month_Month, extends_default()({}, this.state, {
@@ -1933,7 +1942,7 @@ function (_PureComponent) {
             month: state
           });
         }
-      }))), external_react_default.a.createElement(TabPane, {
+      }))), !disableWeek && external_react_default.a.createElement(TabPane, {
         tab: "\u5468",
         key: "week"
       }, external_react_default.a.createElement(Week_Week, extends_default()({}, this.state, {
@@ -1942,7 +1951,7 @@ function (_PureComponent) {
             week: state
           });
         }
-      }))), external_react_default.a.createElement(TabPane, {
+      }))), !disableYear && external_react_default.a.createElement(TabPane, {
         tab: "\u5E74",
         key: "year"
       }, external_react_default.a.createElement(Year_Year, extends_default()({}, this.state, {
@@ -1966,6 +1975,14 @@ function (_PureComponent) {
           hour = state.hour,
           minute = state.minute,
           second = state.second;
+      var _this$props2 = this.props,
+          disableSecond = _this$props2.disableSecond,
+          disableMinute = _this$props2.disableMinute,
+          disableHour = _this$props2.disableHour,
+          disableDay = _this$props2.disableDay,
+          disableWeek = _this$props2.disableWeek,
+          disableMonth = _this$props2.disableMonth,
+          disableYear = _this$props2.disableYear;
       return external_react_default.a.createElement("div", {
         className: "antd-cron"
       }, this.renderOverLay(), external_react_default.a.createElement(external_antd_["List"], {
@@ -2005,6 +2022,7 @@ function (_PureComponent) {
         span: 3
       }, external_react_default.a.createElement(external_antd_["Input"], {
         value: second.value,
+        disabled: disableSecond,
         onChange: function onChange(e) {
           _this6.onChange("second", e.target.value);
         }
@@ -2012,6 +2030,7 @@ function (_PureComponent) {
         span: 3
       }, external_react_default.a.createElement(external_antd_["Input"], {
         value: minute.value,
+        disabled: disableMinute,
         onChange: function onChange(e) {
           _this6.onChange("minute", e.target.value);
         }
@@ -2019,6 +2038,7 @@ function (_PureComponent) {
         span: 3
       }, external_react_default.a.createElement(external_antd_["Input"], {
         value: hour.value,
+        disabled: disableHour,
         onChange: function onChange(e) {
           _this6.onChange("hour", e.target.value);
         }
@@ -2026,6 +2046,7 @@ function (_PureComponent) {
         span: 3
       }, external_react_default.a.createElement(external_antd_["Input"], {
         value: day.value,
+        disabled: disableDay,
         onChange: function onChange(e) {
           _this6.onChange("day", e.target.value);
         }
@@ -2033,6 +2054,7 @@ function (_PureComponent) {
         span: 3
       }, external_react_default.a.createElement(external_antd_["Input"], {
         value: month.value,
+        disabled: disableMonth,
         onChange: function onChange(e) {
           _this6.onChange("month", e.target.value);
         }
@@ -2040,6 +2062,7 @@ function (_PureComponent) {
         span: 3
       }, external_react_default.a.createElement(external_antd_["Input"], {
         value: week.value,
+        disabled: disableWeek,
         onChange: function onChange(e) {
           _this6.onChange("week", e.target.value);
         }
@@ -2047,6 +2070,7 @@ function (_PureComponent) {
         span: 3
       }, external_react_default.a.createElement(external_antd_["Input"], {
         value: year.value,
+        disabled: disableYear,
         onChange: function onChange(e) {
           _this6.onChange("year", e.target.value);
         }
